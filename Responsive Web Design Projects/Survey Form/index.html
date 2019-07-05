@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Survey Form by Clement Yam</title>
+</head>
+
+<body>
+    <h1 id="title">Survey Form</h1>
+    <p id="description"></p>
+    <form method="GET" action="" id="survey-form">
+        <label for="name" id="name-label">Name</label>
+        <input type="text" name="name" id="name" placeholder="Name">
+
+        <label for="email" id="email-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email">
+
+        <label for="number" id="number-label">Age</label>
+        <input type="number" name="age" id="number" min="0" max="100" placeholder="Age">
+
+        <label for="dropdown">What is your current level?</label>
+        <select name="level" id="dropdown">
+            <option value="complete-beginner">Complete Beginner</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="higher-intermediate">Higher Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+
+        <label>
+            Friend
+            <input type="radio" name="how-know" value="friend">
+        </label>
+        <label>
+            Relatives
+            <input type="radio" name="how-know" value="relatives">
+        </label>
+        <label>
+            Internet
+            <input type="radio" name="how-know" value="internet">
+        </label>
+        <label>
+            Newspapers
+            <input type="radio" name="how-know" value="newspapers">
+        </label>
+
+        <label for="electives">What are the electives you are interested in attending?</label>
+        <div id="electives">
+            <input type="checkbox" name="taiwanese-elective" value="taiwanese" id="taiwanese">
+            <label for="taiwanese">Taiwanese</label>
+
+            <input type="checkbox" name="lets-talk-elective" id="lets-talk">
+            <label for="lets-talk">Let's Talk</label>
+
+            <input type="checkbox" name="grammar-elective" id="grammar">
+            <label for="grammar">Grammar</label>
+
+            <input type="checkbox" name="vocabulary-elective" id="vocabulary">
+            <label for="vocabulary">Vocabulary</label>
+
+            <input type="checkbox" name="idioms-elective" id="idioms">
+            <label for="idioms">Chinese Idioms</label>
+
+            <input type="checkbox" name="singing-elective" id="singing">
+            <label for="singing">Singing</label>
+        </div>
+
+        <label for="text-reason">Can you explain in a few words why you chose National Cheng Kung University?</label>
+        <textarea name="enroll-justification" id="text-reason" cols="30" rows="10" placeholder="Enter your text here..."></textarea>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</body>
+
+</html>
