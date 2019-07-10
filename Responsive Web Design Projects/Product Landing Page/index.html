@@ -1,6 +1,7 @@
 <html lang="en">
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Quicksand|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Product Landing Page</title>
 </head>
@@ -14,79 +15,110 @@
         <h1>Hei Tea</h1>
         <nav id="nav-bar">
             <ul>
-                <li class="nav-link"><a href="#tea">Our tea</a></li>
-                <li class="nav-link"><a href="#products">Our products</a></li>
-                <li class="nav-link"><a href="#about-us">About us</a></li>
+                <li><a href="#tea" class="nav-link">Our teas</a></li>
+                <li><a href="#products" class="nav-link">Our products</a></li>
+                <li><a href="#about-us" class="nav-link">About us</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <div class="tea-grid" id="tea">
-            <div class="photo-container make-tea-photo">
-                <img src="" alt="">
+            <div class="photo-container choose-tea-photo">
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562787169/beverage-chiang-mai-cup-1581484_mfaoyv.jpg" alt="">
                 <div class="photo-overlay">
-                    <h2>How we make our teas</h2>
-                    <p>Description</p>
+                    <h2>How we choose our teas</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, error. Sunt ea nostrum
+                        blanditiis magnam neque deserunt facilis necessitatibus dolor eveniet excepturi sint doloribus,
+                        ex, accusamus architecto voluptatibus, dolorum veniam.</p>
                 </div>
             </div>
             <div class="photo-container environment-photo">
-                <img src="" alt="">
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562680676/blur-close-up-coffee-cup-405238_swgzl2.jpg" alt="">
                 <div class="photo-overlay">
                     <h2>Respect the environment</h2>
-                    <p>Description</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate corporis, maiores autem
+                        cumque non obcaecati rem voluptas voluptates nobis placeat pariatur, nisi quas eos commodi aut
+                        natus blanditiis. Quos, itaque.</p>
                 </div>
             </div>
             <div class="photo-container farmers-photo">
-                <img src="" alt="">
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562787483/christmas-cinnamon-cup-259955_jqao6g.jpg" alt="">
                 <div class="photo-overlay">
                     <h2>Respect our farmers</h2>
-                    <p>Description</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus itaque saepe quos in quod,
+                        alias ratione eos tempore soluta nisi cum. Consectetur, voluptatibus veniam obcaecati ullam
+                        voluptatum maiores eligendi est.</p>
+                </div>
+            </div>
+            <div class="photo-container quality-photo">
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562787370/adult-agriculture-basket-2153824_jdatk5.jpg" alt="">
+                <div class="photo-overlay">
+                    <h2>Quality guaranteed</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, error. Sunt ea nostrum
+                        blanditiis magnam neque deserunt facilis necessitatibus dolor eveniet excepturi sint doloribus,
+                        ex, accusamus architecto voluptatibus, dolorum veniam.</p>
                 </div>
             </div>
         </div>
 
+        <hr>
 
         <form action="https://www.freecodecamp.com/email-submit" method="GET" id="form">
-            <input type="email" name="clientEmail" id="client-email" placeholder="Type your email here...">
-            <button type="submit">Get Started</button>
+            <input type="email" id="email" name="email" id="client-email" placeholder="Type your email here...">
+            <input type="submit" id="submit" value="Get Started"></input>
         </form>
 
 
         <iframe src="https://www.youtube.com/embed/_C240OIhNHo" width="420" height="315" id="video"></iframe>
 
-        <div class="products-grid" id="products">
+        <hr>
+
+        <div class="products-flex" id="products">
             <div class="photo-container">
-                <img src="" alt="">
-                <h2>Thé B</h2>
-                <p>Description Thé B</p>
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562788809/caffeine-coffee-cup-641038_espcx9.jpg" alt="">
+                <h2>Thé A</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum in repellendus consectetur
+                    mollitia impedit tenetur, commodi odio fugiat nostrum voluptatem porro quidem omnis quibusdam
+                    architecto tempore labore aut laborum voluptate.</p>
             </div>
             <div class="photo-container">
-                <img src="" alt="">
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562788809/caffeine-coffee-cup-641038_espcx9.jpg" alt="">
                 <h2>Thé B</h2>
-                <p>Description Thé B</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates commodi obcaecati labore
+                    asperiores perspiciatis error facere quisquam eum, consectetur sapiente fuga repellendus fugit.
+                    Ullam accusantium maiores omnis fugit voluptas.</p>
             </div>
             <div class="photo-container">
-                <img src="" alt="">
+                <img src="https://res.cloudinary.com/tzunhei/image/upload/v1562788809/caffeine-coffee-cup-641038_espcx9.jpg" alt="">
                 <h2>Thé C</h2>
-                <p>Description Thé C</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus adipisci iusto aliquid commodi
+                    quod nihil, eligendi voluptas expedita nesciunt illo maiores nulla quisquam quo mollitia fugit,
+                    ipsum debitis quam aperiam.</p>
             </div>
         </div>
+
+        <hr>
 
         <div id="about-us">
             <h2>About us</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe aliquid amet quia earum eveniet
                 perferendis esse fugit, ullam voluptates tempore explicabo accusantium repudiandae voluptatem maiores
-                sed rem mollitia necessitatibus laboriosam?</p>
+                sed rem mollitia necessitatibus laboriosam?Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ipsam, molestiae soluta quasi natus provident accusantium laborum blanditiis facere voluptate
+                reprehenderit nostrum architecto adipisci nobis illo, laboriosam, vero ipsum quas fugit. Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Assumenda, corrupti qui tenetur ut voluptatem eius ducimus
+                distinctio accusamus eum doloribus aspernatur natus porro, minus molestias cum, repellendus autem
+                eligendi? Quo.</p>
         </div>
     </main>
 
     <footer>
         <p>@ Design by Clément Yam</p>
         <ul>
-            <li>Privacy</li>
-            <li>Terms</li>
-            <li>Contacts</li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a> </li>
+            <li><a href="#">Contacts</a></li>
         </ul>
     </footer>
 
