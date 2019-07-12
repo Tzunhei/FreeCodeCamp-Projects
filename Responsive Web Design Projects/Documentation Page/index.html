@@ -1,0 +1,277 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Lora|Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Technical Documentation Page</title>
+</head>
+
+<body>
+    <main id="main-doc">
+        <nav id="navbar">
+            <header>
+                <h1>Asynchronous Programming in JavaScript</h1>
+            </header>
+            <ul>
+                <li><a href="#What_is_Asynchronous_Programming?" class="nav-link">What is Asynchronous Programming?</a>
+                </li>
+                <li><a href="#Asynchronous_JS_with_callbacks" class="nav-link">Asynchronous JS with callbacks</a></li>
+                <li><a href="#Callbacks_review" class="nav-link">Callbacks Review</a></li>
+                <li><a href="#Understanding_Promises" class="nav-link">Understanding Promises</a></li>
+                <li><a href="#Exploiting_Async_/_Await" class="nav-link">Exploiting Async / Await</a></li>
+            </ul>
+        </nav>
+        <div class="main-container">
+            <section class="main-section" id="What_is_Asynchronous_Programming?">
+                <header>
+                    <h2>What is Asynchronous Programming?</h2>
+                </header>
+                <p>Allow other parts of your program to carry on and run while other potentially blocking script wait to
+                    complete. </p>
+                <h3>Synchronous</h3>
+                <p>Only one thing is able to run to completion at any given time.
+                    Drawback => It makes the page unresponsive. The user is not able to interact with the page until the
+                    requested data is eventually returned.
+                    JS is a synchronous, single-threaded language.</p>
+                <h3>How does Asynchronous programming works?</h3>
+                <ul>
+                    <li>
+                        <h3>Call Stack</h3>
+                        <p>JavaScript runtime (or host) environments like the browser and Node have a built-in
+                            interpreter
+                            that executes JavaScript code. It's called the JavaScript engine. The engine has a
+                            mechanism,
+                            called the call stack, for keeping track of the order of function calls and where it is in a
+                            program at any given moment.
+
+                            Anytime a function gets called, it gets pushed onto the call stack, and any functions called
+                            within the original function are pushed higher up onto the call stack. When a function is
+                            done
+                            executing, it gets popped off the top of the call stack, and the next function in the stack
+                            gets
+                            processed.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Web APIs</h3>
+                        <p>The call stack handles asynchronous tasks in a different way than synchronous tasks. Whenever
+                            the
+                            JavaScript environment encounters code that needs to run and execute at a later time, like a
+                            setTimeout() callback or a network request, that code is handed off to a special Web API
+                            that
+                            processes the async operation. Meanwhile, the call stack moves on to other tasks then
+                            revisits
+                            the async task when it's ready to be dealt with.
+                            It's important to note that the asynchronous behavior of JavaScript does not come from the
+                            JavaScript engine itself. JavaScript engines like Chrome's V8, for instance, do not have
+                            asynchronous capabilities. Asynchronicity actually comes from the runtime environment.
+                            Runtime
+                            environments (like web browsers and Node) provide APIs that let JavaScript run tasks
+                            asynchronously.</p>
+                    </li>
+                    <li>
+                        <h3>Callback Queue</h3>
+                        <p>You learned that web APIs are what actually process async operations while keeping the call
+                            stack
+                            clear of blocking operations. When a web API is done processing an async task, it's not
+                            immediately executed on the call stack. Instead, its associated callback function gets
+                            pushed
+                            into something called the callback queue, which is a list (or line) containing all the async
+                            task callbacks waiting to be executed.
+                            You can think of the callback queue as a holding area for all the callbacks that are waiting
+                            to
+                            be put on the call stack and eventually executed. Only callbacks for (non-blocking)
+                            operations
+                            that are scheduled to complete execution at a later time like setTimeout, setInterval and
+                            AJAX
+                            requests, for example, are added to the callback queue.</p>
+                    </li>
+                    <li>
+                        <h3>The event Loop</h3>
+                        <p>The event loop has one important job: monitor the call stack and callback queue. Anytime the
+                            call
+                            stack is empty, the event loop takes the first task from the callback queue and pushes it
+                            onto
+                            the call stack, and runs it. </p>
+                    </li>
+                </ul>
+            </section>
+            <section class="main-section" id="Asynchronous_JS_with_callbacks">
+                <header>
+                    <h2>Asynchronous JS with Callbacks</h2>
+                </header>
+                <p>Callbacks to manage asynchronous requests along with the XML http request API can be a bit too
+                    complex to
+                    use and manage compare to the modern data fetching API tools and syntax JS introduced in ES2015 and
+                    ES
+                    2017.
+                    A callback function in an asynchronous program executes at some point later, once the parent
+                    function
+                    receives the data it needs.
+                </p>
+                <h3>Pyramid of doom</h3>
+                <p>Multiple callbacks are nested one after the other, making your code difficult to understand and
+                    maintain.
+                </p>
+                <code>
+                                function getJSON(url, callback) {
+                                    const xhr = new XMLHttpRequest();
+                                    xhr.open('GET', url);
+                                    xhr.onload = () => {
+                                      if(xhr.status === 200) {
+                                        let data = JSON.parse(xhr.responseText);
+                                        return callback(data);
+                                      }
+                                    };
+                                    xhr.send();
+                                  }
+                        </code>
+            </section>
+            <section class="main-section" id="Callbacks_review">
+                <header>
+                    <h2>Callbacks Review</h2>
+                </header>
+                <p>A callback function is a function passed into another function as an argument. The function that
+                    receives
+                    the callback function is often referred to as the "parent" function. The callback function is then
+                    called and executed later, after the parent function has finished executing.
+                    For example, the add function below accepts a function as its third argument (via the parameter
+                    callback). When add is invoked, the function passed to it logs the sum of the values passed in for
+                    aand
+                    b.</p>
+                <code>
+                                function add(a, b, callback) {
+                                    callback(a + b);
+                                  }
+                                  
+                                  add(2, 4, function(sum) {
+                                    console.log(sum); // 6
+                                  });
+                        </code>
+                <p>In the following example, the function getUserName accepts a function as an argument (via the
+                    parameter
+                    callback). The greeting function passed to getUserName is invoked after prompt()captures a name and
+                    stores it in the variable name.</p>
+                <code>
+                                function getUserName(callback) {
+                                    const name = prompt('What is your name?');
+                                    callback(name);
+                                  }
+                                  
+                                  function greeting(name) {
+                                    alert('Hello, ' + name);
+                                  }
+                                  
+                                  getUserName(greeting); // a reference to the greeting function is passed to the function
+                        </code>
+            </section>
+            <section class="main-section" id="Understanding_Promises">
+                <header>
+                    <h2>Understanding Promises</h2>
+                </header>
+                <p>Represents a value that can be handled at some point later. Will promise or guarantee a future value
+                    and
+                    nothing can change it, regardless of whether or not it comes back fulfilled or rejected.</p>
+                <h3>Promises states:</h3>
+                <ul>
+                    <li>Pending: default state, waiting</li>
+                    <li>Fulfilled: operation completed successfully</li>
+                    <li>Rejected: failed</li>
+                </ul>
+                <h3>Working with Promises:</h3>
+                <ul>
+                    <li>Create a promise instance using the Promise() constructor</li>
+                    <li>Define what should happen when the promise is fulfilled or rejected</li>
+                    <li>Consume the value of a fulfilled promise, or provide a rejection reason for a rejected promise
+                    </li>
+                </ul>
+                <code>
+                                const variableName = new Promise((resolve, reject) => {...}
+                        </code>
+                <p>Function return a promise object that is either pending, fulfilled or rejected.</p>
+                <p>resolve() => resolves the status of the promises from pending to fulfilled. Argument which then
+                    becomes
+                    the fulfilment value of the promise.</p>
+                <p>reject(arg) => if not specified, promise will failed silently. Program will continue to execute as if
+                    everything was fine.</p>
+                <h3>Promises methods:</h3>
+                <ul>
+                    <li>then() :<br> can handle both fulfilled and rejected promises. 2 arguments, 1 for fulfilled and one
+                        optional for rejected promises.</li>
+                    <li>catch() :<br> handle rejected promises</li>
+                    <li>Promise.all():<br>
+                        Useful when waiting for more than one promise to resolve.
+                        Accepts an utterable such as a string or an array. (usually array of promises)
+                        Going to wait on all of the individual promise objects then joins them into one and returns a
+                        value
+                        when all the specified promises are fulfilled. If one fails then rejects the entire promise.
+                        Is an all or nothing operation.
+                        Promise.all joins multiple individual promises into a single returned Promise when all of the
+                        promises resolves.</li>
+                    <li>Perform cleanup with finally():<br>
+                        Gets called once a promise is fully settled. Usually best to use finally as the last chain
+                        method.
+                    </li>
+                    <li>
+                        Using fetch():<br>
+                        Fetch takes one mandatory argument, the path to the resource you want to fetch. Can get rid of
+                        the
+                        getJSON function entirely because this fetch method is going to handle most of these tasks for
+                        us.
+                        Return a promise, once fetch makes the requests and the data finishes loading, the fetch promise
+                        is
+                        fulfilled.
+                        fetch() returns a Promise that resolves to a Response object.
+                        In order to access and use the data, we need to parse it to JSON first.
+                        then(response => response.json());
+                    </li>
+                </ul>
+            </section>
+            <section class="main-section" id="Exploiting_Async_/_Await">
+                <header>
+                    <h2>Exploiting Async / Await</h2>
+                </header>
+                <p>Lets you write Asynchronous promise-based code that looks more like synchronous code.
+                    Enhance readability.
+                </p>
+                <h3>Await Keyword</h3>
+                <ul>
+                    <li>Pauses the execution of an async function and waits for the resolution of a promise</li>
+                    <li>Resumes execution and returns the resoled value</li>
+                    <li>Pausing execution is not going to cause blocking behavior</li>
+                    <li>Valid only inside functions marked async</li>
+                </ul>
+                <p>Async function always returns a promise.
+                    That promise resolves with the value returned by the async function, or rejects with an error thrown
+                    from within the function.
+
+                    Can combine async/await with traditional promises but not meant to replace it.
+                    Syntactic sugar for creating functions that return and wait for promises.
+                    It’s a supplement to promises.
+
+                    Error handling with try..catch:
+                    Most common way to handle exceptions when using async/await.
+                    await wait for response => fulfilled or rejected => if rejected then throw error => catch</p>
+                <p>Using try ...catch and async/await in the event listener</p>
+                <code>
+                                btn.addEventListener('click', async (event) => {
+                                    event.target.textContent = 'Loading...';
+                                    try {
+                                      const astros = await getPeopleInSpace(astrosUrl);
+                                      generateHTML(astros);
+                                    } catch(e) {
+                                      astrosList.innerHTML = 'Something went wrong!';
+                                      console.error(e);    
+                                    } finally {
+                                      event.target.remove();
+                                    }
+                                  });
+                                  
+                        </code>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
