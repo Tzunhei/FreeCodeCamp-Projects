@@ -8,20 +8,17 @@
 </head>
 
 <body>
-    <header>
-        <nav id="nav-bar">
-            <ul class="wrapper">
-                <li><a href="#welcome-section">About</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav id="navbar">
+        <ul class="wrapper">
+            <li><a href="#welcome-section">About</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <main>
         <section id="welcome-section">
             <div class="wrapper">
                 <h1>Hey I am Clément Yam.</h1>
-                <p>Welcome to my personal porfolio</p>
                 <p>@ web developer</p>
             </div>
         </section>
@@ -29,20 +26,71 @@
             <div class="wrapper">
                 <h2>Here are some of my personal projects</h2>
                 <ul class="project-tile">
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    <li class="project-card">
+                        <a href="https://codepen.io/tzunhei/pen/gNKgym" target="_blank">
+                            <img src="https://res.cloudinary.com/tzunhei/image/upload/v1564131216/Screen_Shot_2019-07-26_at_10.49.48_loongy.png"
+                                alt="Ip Man Tribute Page">
+                            <p>Tribute Page</p>
+                        </a>
+                    </li>
+                    <li class="project-card">
+                        <a href="https://codepen.io/tzunhei/pen/zVJBWW" target="_blank">
+                            <img src="https://res.cloudinary.com/tzunhei/image/upload/v1564131216/Screen_Shot_2019-07-26_at_10.49.20_wmhoea.png"
+                                alt="Survey Form">
+                            <p>Survey Form</p>
+                        </a>
+                    </li>
+                    <li class="project-card">
+                        <a href="https://codepen.io/tzunhei/pen/ormMGY" target="_blank">
+                            <img src="https://res.cloudinary.com/tzunhei/image/upload/v1564131217/Screen_Shot_2019-07-26_at_10.48.48_oxmz4y.png"
+                                alt="Product Landing Page">
+                            <p>Project Landing</p>
+                        </a>
+                    </li>
+                    <li class="project-card">
+                        <a href="https://codepen.io/tzunhei/pen/qzwPVM" target="_blank">
+                            <img src="https://res.cloudinary.com/tzunhei/image/upload/v1564131216/Screen_Shot_2019-07-26_at_10.47.15_ajo5ok.png"
+                                alt="Technical Documentation Page">
+                            <p>Technical Documentation</p>
+                        </a>
+                    </li>
+                    <li class="project-card">
+                        <a href="#" target="_blank">
+                            <img src="https://via.placeholder.com/300" alt="">
+                            <p>Work In Progress</p>
+                        </a>
+                    </li>
+                    <li class="project-card">
+                        <a href="#" target="_blank">
+                            <img src="https://via.placeholder.com/300" alt="">
+                            <p>Work In Progress</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
         <section id="contact">
             <div class="wrapper">
-                <h2>Interested? Let's work together !</h2>
+                <h2>Interested ? Let's work together !</h2>
                 <ul>
-                    <li><a href="">GitHub</a></li>
-                    <li><a href="">Linkedin</a></li>
-                    <li><a href="">Email</a></li>
+                    <li>
+                        <a id="profile-link" href="https://github.com/Tzunhei" target="_blank">
+                            <i class="fab fa-github fa-lg"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                            Linkedin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <i class="fas fa-envelope fa-lg"></i>
+                            Email
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -53,6 +101,9 @@
             <p>Created for freeCodeCamp</p>
         </div>
     </footer>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 </body>
 
 </html>

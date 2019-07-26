@@ -1,6 +1,6 @@
 :root {
-    --welcome-section-bg-color: #aed581;
-    --welcome-section-text-color: #fff;
+    --welcome-section-bg-color: #37474f;
+    --welcome-section-text-color: #ff8f00;
 
     --nav-bg-color : #78909c;
     --nav-text-color : #fff;
@@ -13,6 +13,10 @@
 
     --footer-section-bg-color: #aed581;
     --footer-section-text-color: #fff;
+
+    --card-bg-color : #78909c;
+    --card-text-color: #fff;
+
 }
 
 /* General Styling */
@@ -23,8 +27,12 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .wrapper {
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -42,33 +50,38 @@ p {
     font-family: "Roboto", Helvetica, sans-serif;
 }
 
+li {
+    list-style: none;;
+}
+
 /* Navigation bar Styling */
 
-header {
+#navbar {
     position: fixed;
     width: 100%;
     padding: 20px;
     background-color: var(--nav-bg-color);
     color: var(--nav-text-color);
-}
-
-#nav-bar {
-    width: 40%;
+    box-shadow: 0 0 1px #000;
+    z-index: 5;
     margin: 0 auto;
 }
 
-#nav-bar ul {
+#navbar ul {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
 }
 
-#nav-bar ul li {
-    list-style: none;
+#navbar ul li {
+    padding: 10px;
     font-size: 1.2rem;
+    transition: transform .2s ease-out;
 }
 
-#nav-bar ul li:not(:last-child) {
-    margin-right: 50px;
+#navbar ul li:hover {
+    transform: scale(1.1);
 }
 
 /* Welcome section Styling */
@@ -87,12 +100,40 @@ header {
     align-items: center;
 }
 
+/* h1 Animation */
+
+@keyframes slideindown {
+    from {
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #welcome-section div h1 {
     font-size: 4rem;
+    animation: slideindown 1s ease-out;
+}
+
+/* p Animation */
+
+@keyframes slideintop {
+    from {
+        opacity: 0;
+        transform: translateY(100px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #welcome-section div p {
     font-size: 1.5rem;
+    animation: slideintop 1s ease-out;
 }
 
 /* Project section Styling */
@@ -100,6 +141,46 @@ header {
 #projects {
     background-color: var(--project-bg-color);
     color: var(--project-text-color);
+    padding: 40px;
+}
+
+#projects h2 {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.project-tile {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+    grid-gap: 40px;
+    justify-content: center;
+}
+
+.project-card {
+    box-shadow: 0 0 2px #000;
+    overflow: hidden;
+    transition: transform .2s ease-out;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card img {
+    height: 300px;
+    width:auto;
+}
+
+.project-card p {
+    display: block;
+    width: 100%;
+    padding: 25px 10px;
+    text-align: center;
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    font-size: 1.2rem;
 }
 
 /* Contact section Styling */
@@ -107,6 +188,41 @@ header {
 #contact {
     background-color: var(--contact-section-bg-color);
     color: var(--contact-section-text-color);
+    height: 100vh;
+}
+
+#contact h2 {
+    font-size: 4rem;
+    padding-bottom: 40px;
+}
+
+#contact .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact .wrapper ul {
+    align-self: flex-start;
+}
+
+#contact .wrapper ul li {
+    padding: 20px 0;
+    transition: transform .4s ease-out;
+}
+
+#contact .wrapper ul li:hover {
+    transform: translateY(15px);
+}
+
+#contact .wrapper ul a {
+    font-size: 1.4rem;
+}
+
+#contact .wrapper ul a svg {
+    margin: 0 5px;
 }
 
 /* Footer Styling */
@@ -114,8 +230,50 @@ header {
 footer {
     background-color: var(--footer-section-bg-color);
     color: var(--footer-section-text-color);
+    padding: 40px 0;
+    border-top: solid 2px #fff;
+}
+
+footer .wrapper {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media all and (min-width: 769px) {
+
+    /* Navigation bar Styling */
+
+    #navbar ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #navbar ul li:not(:last-child) {
+        margin-right: 50px;
+    }
+
+    /* Welcome section Styling */
+
+    #welcome-section div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Contact section Styling */
+
+    #contact h2 {
+        padding-bottom: 0;
+    }
+
+    #contact .wrapper ul {
+        margin-top: 50px;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+    }
 
 }
