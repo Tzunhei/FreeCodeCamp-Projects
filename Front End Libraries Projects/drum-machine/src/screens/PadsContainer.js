@@ -5,11 +5,13 @@ import { playSound } from "../actions";
 import _ from "lodash";
 
 import Pad from "../components/Pad";
+import "./PadsContainer.css";
 
 class PadsContainer extends React.Component {
   handleClick = e => {
-    e.target.children[0].volume = this.props.volume / 100;
-    e.target.children[0].play();
+    const audio = e.target.children[0];
+    audio.volume = this.props.volume / 100;
+    audio.play();
     this.props.playSound(e.target.innerText);
   };
 
@@ -17,6 +19,9 @@ class PadsContainer extends React.Component {
     const sound = _.values(this.props.sounds).filter(
       sound => sound.keyCode === e.keyCode
     );
+    if (sound.length === 0) {
+      return null;
+    }
     this.props.playSound(sound[0].id);
     const playKey = new Audio(sound[0].src);
     playKey.play();
@@ -32,10 +37,14 @@ class PadsContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="pads-container">
         {_.values(this.props.sounds).map((sound, index) => {
           return (
-            <Pad key={`key-${index}`} sound={sound.src} handleClick={this.handleClick}>
+            <Pad
+              key={`key-${index}`}
+              sound={sound.src}
+              handleClick={this.handleClick}
+            >
               {sound.id}
             </Pad>
           );

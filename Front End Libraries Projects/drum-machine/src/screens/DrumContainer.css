@@ -1,0 +1,17 @@
+#drum-machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 100px;
+  background-color: #039be5;
+  color: #d81b60;
+  font-family: "Righteous", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  box-shadow: 0 0 4px #212121;
+}
+
+#drum-machine h1 {
+  font-size: 4rem;
+  font-family: "Monoton", Arial, Helvetica, sans-serif;
+}

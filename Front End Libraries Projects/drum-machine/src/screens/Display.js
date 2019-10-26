@@ -1,18 +1,25 @@
-import React from 'react'
-import {connect} from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
 
-const Display = (props) => {
+import "./Display.css";
+
+import VolumeSlider from "../components/VolumeSlider";
+
+const Display = props => {
   return (
-    <div>
+    <div id="display">
       <p>{props.currentSound}</p>
+      <p>Volume: {props.volume}</p>
+      <VolumeSlider />
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
+    volume: state.volume,
     currentSound: state.sounds.lastSound
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(Display);

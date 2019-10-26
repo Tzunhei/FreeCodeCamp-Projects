@@ -1,15 +1,17 @@
-import React from 'react'
-import Display from './Display';
-import PadContainer from './PadsContainer';
-import VolumeSlider from '../components/VolumeSlider';
+import React from "react";
+import Display from "./Display";
+import PadsContainer from "./PadsContainer";
+
+import "./DrumContainer.css";
 
 export default function DrumContainer() {
-
   return (
-    <div>
-      <Display id="display" />
-      <VolumeSlider />
-      <PadContainer />
+    <div id="drum-machine">
+      <h1>Drum Machine</h1>
+      <p>With React & Redux</p>
+      <Display />
+      <PadsContainer />
+      <p>@Design By Clement Yam</p>
     </div>
-  )
+  );
 }
