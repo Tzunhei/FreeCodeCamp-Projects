@@ -1,1 +1,4 @@
 export const SET_CONFIGURATION = "SET_CONFIGURATION";
+export const START_CHRONO = "START_CHRONO";
+export const STOP_CHRONO = "STOP_CHRONO";
+export const REFRESH_CHRONO = "REFRESH_CHRONO";
