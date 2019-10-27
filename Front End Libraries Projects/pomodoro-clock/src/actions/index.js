@@ -1,4 +1,4 @@
-import { SET_CONFIGURATION, SET_CHRONO } from "../constants";
+import { SET_CONFIGURATION, SET_TIMER } from "../constants";
 
 export const setConfiguration = (option, operation) => {
   return {
@@ -10,9 +10,9 @@ export const setConfiguration = (option, operation) => {
   };
 };
 
-export const setChrono = option => {
+export const setTimer = option => {
   return {
-    type: SET_CHRONO,
+    type: SET_TIMER,
     payload: option
   };
 };

@@ -8,15 +8,15 @@ const initialConfig = {
 export default (state = initialConfig, action) => {
   switch (action.type) {
     case SET_CONFIGURATION:
-      if (action.payload === "break") {
+      if (action.payload.option === "break") {
         return {
           ...state,
-          break: state.break + action.payload.value
+          break: state.break + action.payload.operation
         };
       } else {
         return {
           ...state,
-          session: state.session + action.payload.value
+          session: state.session + action.payload.operation
         };
       }
     default:

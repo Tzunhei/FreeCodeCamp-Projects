@@ -3,7 +3,7 @@ import "./App.css";
 
 import Title from "./screens/Title";
 import Configuration from "./screens/Configuration";
-import Clock from "./screens/Clock";
+import Timer from "./screens/Timer";
 import Controls from "./screens/Controls";
 import Footer from "./screens/Footer";
 
@@ -12,7 +12,7 @@ const App = () => {
     <div className="App">
       <Title />
       <Configuration />
-      <Clock />
+      <Timer />
       <Controls />
       <Footer />
     </div>
