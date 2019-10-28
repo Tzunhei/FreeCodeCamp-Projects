@@ -1,4 +1,4 @@
-import { SET_CONFIGURATION, SET_TIMER } from "../constants";
+import { SET_CONFIGURATION, START_STOP_TIMER, RESET_TIMER } from "../constants";
 
 export const setConfiguration = (option, operation) => {
   return {
@@ -10,9 +10,16 @@ export const setConfiguration = (option, operation) => {
   };
 };
 
-export const setTimer = option => {
+export const startStopTimer = option => {
   return {
-    type: SET_TIMER,
+    type: START_STOP_TIMER,
+    payload: option
+  };
+};
+
+export const resetTimer = option => {
+  return {
+    type: RESET_TIMER,
     payload: option
   };
 };

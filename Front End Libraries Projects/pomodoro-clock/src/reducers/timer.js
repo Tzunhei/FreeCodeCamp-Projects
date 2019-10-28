@@ -1,12 +1,8 @@
-import {
-  START_TIMER,
-  STOP_TIMER,
-  REFRESH_TIMER,
-  SET_CONFIGURATION
-} from "../constants";
+import { START_STOP_TIMER, RESET_TIMER, SET_CONFIGURATION } from "../constants";
 
 const initialTimer = {
-  timeLeft: 25
+  timeLeft: 25 * 60,
+  isRunning: false
 };
 
 export default (state = initialTimer, action) => {
@@ -18,11 +14,9 @@ export default (state = initialTimer, action) => {
         };
       }
       return state;
-    case START_TIMER:
+    case START_STOP_TIMER:
       return state;
-    case STOP_TIMER:
-      return state;
-    case REFRESH_TIMER:
+    case RESET_TIMER:
       return state;
     default:
       return state;

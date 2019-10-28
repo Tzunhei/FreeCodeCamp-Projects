@@ -2,7 +2,7 @@ import { SET_CONFIGURATION } from "../constants";
 
 const initialConfig = {
   break: 5,
-  session: 25
+  session: 25 * 60
 };
 
 export default (state = initialConfig, action) => {

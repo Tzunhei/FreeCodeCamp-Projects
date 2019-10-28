@@ -1,20 +1,27 @@
 import React from "react";
+import { connect } from "react-redux";
+import { startStopTimer, resetTimer } from "../actions";
 
 import Button from "../components/Button";
 
 const Controls = () => {
-  const handleClick = () => {};
+  const handleStartStopClick = () => {};
+
+  const handleResetClick = () => {};
 
   return (
     <div>
-      <Button handleClick={handleClick} id="start_stop">
+      <Button handleClick={handleStartStopClick} id="start_stop">
         Start Stop
       </Button>
-      <Button handleClick={handleClick} id="reset">
+      <Button handleClick={handleResetClick} id="reset">
         Reset
       </Button>
     </div>
   );
 };
 
-export default Controls;
+export default connect(
+  null,
+  { startStopTimer, resetTimer }
+)(Controls);

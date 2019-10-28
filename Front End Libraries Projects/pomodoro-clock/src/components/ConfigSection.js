@@ -5,7 +5,7 @@ import Button from "./Button";
 const ConfigSection = ({
   title,
   type,
-  defaultValue,
+  value,
   handleIncrement,
   handleDecrement
 }) => {
@@ -16,7 +16,7 @@ const ConfigSection = ({
         <Button handleClick={handleIncrement} id={`${type}-increment`}>
           Up
         </Button>
-        <p id={`${type}-length`}>{defaultValue}</p>
+        <p id={`${type}-length`}>{value}</p>
         <Button handleClick={handleDecrement} id={`${type}-decrement`}>
           Down
         </Button>

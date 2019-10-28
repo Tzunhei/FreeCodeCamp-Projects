@@ -13,19 +13,21 @@ const Configuration = ({
   incrementSession,
   decrementSession
 }) => {
+  const minutes = Math.floor(sessionLength / 60);
+
   return (
     <div>
       <ConfigSection
         title={"Break Length"}
         type={"break"}
-        defaultValue={breakLength}
+        value={breakLength}
         handleIncrement={incrementBreak}
         handleDecrement={decrementBreak}
       />
       <ConfigSection
         title={"Session Length"}
         type={"session"}
-        defaultValue={sessionLength}
+        value={minutes}
         handleIncrement={incrementSession}
         handleDecrement={decrementSession}
       />
@@ -42,10 +44,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    incrementBreak: () => dispatch(setConfiguration("break", +1)),
+    incrementBreak: () => dispatch(setConfiguration("break", 1)),
     decrementBreak: () => dispatch(setConfiguration("break", -1)),
-    incrementSession: () => dispatch(setConfiguration("session", +1)),
-    decrementSession: () => dispatch(setConfiguration("session", -1))
+    incrementSession: () => dispatch(setConfiguration("session", +60)),
+    decrementSession: () => dispatch(setConfiguration("session", -60))
   };
 };
 
