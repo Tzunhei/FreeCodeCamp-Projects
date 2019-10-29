@@ -6,10 +6,13 @@ import accurateInterval from "accurate-interval";
 
 import Button from "../components/Button";
 
-const Controls = ({ startStopTimer, updateTimer }) => {
+const Controls = ({ isRunning, startStopTimer, updateTimer }) => {
   const handleStartStopClick = () => {
     startStopTimer();
-    accurateInterval(updateTimer, 1000);
+    let timerInterval;
+    isRunning
+      ? clearInterval(timerInterval)
+      : (timerInterval = accurateInterval(updateTimer, 1000));
   };
 
   const handleResetClick = () => {};
@@ -17,7 +20,7 @@ const Controls = ({ startStopTimer, updateTimer }) => {
   return (
     <div>
       <Button handleClick={handleStartStopClick} id="start_stop">
-        Start Stop
+        {isRunning ? "Stop" : "Start"}
       </Button>
       <Button handleClick={handleResetClick} id="reset">
         Reset
@@ -26,7 +29,13 @@ const Controls = ({ startStopTimer, updateTimer }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    isRunning: state.timer.isRunning
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { startStopTimer, updateTimer, resetTimer }
 )(Controls);
