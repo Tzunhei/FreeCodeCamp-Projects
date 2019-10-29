@@ -1,11 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { startStopTimer, resetTimer } from "../actions";
+import { startStopTimer, updateTimer, resetTimer } from "../actions";
+
+import accurateInterval from "accurate-interval";
 
 import Button from "../components/Button";
 
-const Controls = () => {
-  const handleStartStopClick = () => {};
+const Controls = ({ startStopTimer, updateTimer }) => {
+  const handleStartStopClick = () => {
+    startStopTimer();
+    accurateInterval(updateTimer, 1000);
+  };
 
   const handleResetClick = () => {};
 
@@ -23,5 +28,5 @@ const Controls = () => {
 
 export default connect(
   null,
-  { startStopTimer, resetTimer }
+  { startStopTimer, updateTimer, resetTimer }
 )(Controls);

@@ -13,7 +13,7 @@ const Configuration = ({
   incrementSession,
   decrementSession
 }) => {
-  const minutes = Math.floor(sessionLength / 60);
+  const minutes = Math.floor(sessionLength / 60000);
 
   return (
     <div>
@@ -37,8 +37,8 @@ const Configuration = ({
 
 const mapStateToProps = state => {
   return {
-    breakLength: state.configuration.break,
-    sessionLength: state.configuration.session
+    breakLength: state.timer.break,
+    sessionLength: state.timer.session
   };
 };
 
@@ -46,8 +46,8 @@ const mapDispatchToProps = dispatch => {
   return {
     incrementBreak: () => dispatch(setConfiguration("break", 1)),
     decrementBreak: () => dispatch(setConfiguration("break", -1)),
-    incrementSession: () => dispatch(setConfiguration("session", +60)),
-    decrementSession: () => dispatch(setConfiguration("session", -60))
+    incrementSession: () => dispatch(setConfiguration("session", +60000)),
+    decrementSession: () => dispatch(setConfiguration("session", -60000))
   };
 };
 
