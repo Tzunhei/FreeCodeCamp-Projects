@@ -1,21 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
-import { startStopTimer, updateTimer, resetTimer } from "../actions";
+import { startTimer, stopTimer, updateTimer, resetTimer } from "../actions";
 
 import accurateInterval from "accurate-interval";
 
 import Button from "../components/Button";
 
-const Controls = ({ isRunning, startStopTimer, updateTimer }) => {
+let timerInterval;
+
+const Controls = ({
+  isRunning,
+  startTimer,
+  stopTimer,
+  resetTimer,
+  updateTimer
+}) => {
   const handleStartStopClick = () => {
-    startStopTimer();
-    let timerInterval;
-    isRunning
-      ? clearInterval(timerInterval)
-      : (timerInterval = accurateInterval(updateTimer, 1000));
+    if (isRunning) {
+      stopTimer();
+      timerInterval.clear();
+    } else {
+      startTimer();
+      timerInterval = accurateInterval(updateTimer, 1000);
+    }
   };
 
-  const handleResetClick = () => {};
+  const handleResetClick = () => {
+    timerInterval.clear();
+    resetTimer();
+  };
 
   return (
     <div>
@@ -37,5 +50,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { startStopTimer, updateTimer, resetTimer }
+  { startTimer, stopTimer, updateTimer, resetTimer }
 )(Controls);

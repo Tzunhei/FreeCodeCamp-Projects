@@ -1,6 +1,7 @@
 import {
   SET_CONFIGURATION,
-  START_STOP_TIMER,
+  START_TIMER,
+  STOP_TIMER,
   UPDATE_TIMER,
   RESET_TIMER
 } from "../constants";
@@ -15,9 +16,15 @@ export const setConfiguration = (option, operation) => {
   };
 };
 
-export const startStopTimer = () => {
+export const startTimer = () => {
   return {
-    type: START_STOP_TIMER
+    type: START_TIMER
+  };
+};
+
+export const stopTimer = () => {
+  return {
+    type: STOP_TIMER
   };
 };
 
@@ -30,11 +37,8 @@ export const updateTimer = date => {
   };
 };
 
-export const resetTimer = option => {
+export const resetTimer = () => {
   return {
-    type: RESET_TIMER,
-    payload: {
-      option
-    }
+    type: RESET_TIMER
   };
 };
