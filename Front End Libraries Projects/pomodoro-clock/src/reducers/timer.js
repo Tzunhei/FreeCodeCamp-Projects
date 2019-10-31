@@ -37,6 +37,7 @@ export default (state = initialTimer, action) => {
         isRunning: true
       };
     case STOP_TIMER:
+      console.log(state);
       return {
         ...state,
         isRunning: false

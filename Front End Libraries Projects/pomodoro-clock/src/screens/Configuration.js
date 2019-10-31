@@ -15,21 +15,45 @@ const Configuration = ({
 }) => {
   const minutes = Math.floor(sessionLength / 60000);
 
+  const handleIncrementBreak = e => {
+    if (breakLength < 5) {
+      incrementBreak();
+    }
+  };
+
+  const handleDecrementBreak = e => {
+    if (breakLength > 0) {
+      decrementBreak();
+    }
+  };
+
+  const handleIncrementSession = e => {
+    if (sessionLength < 60 * 60 * 1000) {
+      incrementSession();
+    }
+  };
+
+  const handleDecrementSession = e => {
+    if (sessionLength > 1 * 60 * 1000) {
+      decrementSession();
+    }
+  };
+
   return (
     <div>
       <ConfigSection
         title={"Break Length"}
         type={"break"}
         value={breakLength}
-        handleIncrement={incrementBreak}
-        handleDecrement={decrementBreak}
+        handleIncrement={handleIncrementBreak}
+        handleDecrement={handleDecrementBreak}
       />
       <ConfigSection
         title={"Session Length"}
         type={"session"}
         value={minutes}
-        handleIncrement={incrementSession}
-        handleDecrement={decrementSession}
+        handleIncrement={handleIncrementSession}
+        handleDecrement={handleDecrementSession}
       />
     </div>
   );
