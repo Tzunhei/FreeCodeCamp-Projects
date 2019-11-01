@@ -7,7 +7,7 @@ import {
 } from "../constants";
 
 const initialTimer = {
-  break: 5,
+  break: 5 * 60 * 1000,
   isBreak: false,
   session: 25 * 60 * 1000,
   isOn: false,
@@ -35,7 +35,6 @@ export default (state = initialTimer, action) => {
         isOn: true
       };
     case STOP_TIMER:
-      console.log(state);
       return {
         ...state,
         isOn: false

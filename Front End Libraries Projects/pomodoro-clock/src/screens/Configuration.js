@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { setConfiguration } from "../actions";
-
 import ConfigSection from "../components/ConfigSection";
+import { convertToMs } from "../utils";
 
 const Configuration = ({
   breakLength,
@@ -13,8 +13,6 @@ const Configuration = ({
   incrementSession,
   decrementSession
 }) => {
-  const minutes = Math.floor(sessionLength / 60000);
-
   const handleIncrementBreak = e => {
     if (breakLength < 60) {
       incrementBreak();
@@ -39,19 +37,22 @@ const Configuration = ({
     }
   };
 
+  const breakMinutes = convertToMs(breakLength);
+  const sessionMinutes = convertToMs(sessionLength);
+
   return (
     <div>
       <ConfigSection
         title={"Break Length"}
         type={"break"}
-        value={breakLength}
+        value={breakMinutes}
         handleIncrement={handleIncrementBreak}
         handleDecrement={handleDecrementBreak}
       />
       <ConfigSection
         title={"Session Length"}
         type={"session"}
-        value={minutes}
+        value={sessionMinutes}
         handleIncrement={handleIncrementSession}
         handleDecrement={handleDecrementSession}
       />
