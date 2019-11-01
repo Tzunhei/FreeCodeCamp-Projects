@@ -10,18 +10,17 @@ const initialTimer = {
   break: 5,
   session: 25 * 60 * 1000,
   isRunning: false,
-  currentDate: 0,
-  timeLeft: 0
+  timeLeft: 25 * 60 * 1000
 };
 
 export default (state = initialTimer, action) => {
-  console.log(action);
   switch (action.type) {
     case SET_CONFIGURATION:
       if (action.payload.option === "session") {
         return {
           ...state,
-          session: state.session + action.payload.operation
+          session: state.session + action.payload.operation,
+          timeLeft: state.session + action.payload.operation
         };
       } else {
         return {
@@ -32,8 +31,6 @@ export default (state = initialTimer, action) => {
     case START_TIMER:
       return {
         ...state,
-        currentDate: Date.now(),
-        timeLeft: state.currentDate + state.session,
         isRunning: true
       };
     case STOP_TIMER:
@@ -45,15 +42,14 @@ export default (state = initialTimer, action) => {
     case UPDATE_TIMER:
       return {
         ...state,
-        timeLeft: state.currentDate + state.session - action.payload.date
+        timeLeft: state.timeLeft - 1000
       };
     case RESET_TIMER:
       return {
         break: 5,
         session: 25 * 60 * 1000,
         isRunning: false,
-        currentDate: 0,
-        timeLeft: 0
+        timeLeft: 25 * 60 * 1000
       };
     default:
       return state;

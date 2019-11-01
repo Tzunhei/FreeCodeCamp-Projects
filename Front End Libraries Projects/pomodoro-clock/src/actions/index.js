@@ -28,12 +28,9 @@ export const stopTimer = () => {
   };
 };
 
-export const updateTimer = date => {
+export const updateTimer = () => {
   return {
-    type: UPDATE_TIMER,
-    payload: {
-      date
-    }
+    type: UPDATE_TIMER
   };
 };
 

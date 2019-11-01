@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { formatNumber } from "../utils";
 import { updateTimer } from "../actions";
 
-const Timer = ({ isRunning, timeLeft, session }) => {
-  const time = isRunning ? timeLeft : session;
+const Timer = ({ timeLeft }) => {
+  const time = timeLeft;
   const minutes = formatNumber(Math.floor(time / 60000));
   const seconds = formatNumber(Math.floor((time % 60000) / 1000));
   const timer = `${minutes}:${seconds}`;
@@ -19,9 +19,7 @@ const Timer = ({ isRunning, timeLeft, session }) => {
 
 const mapStateToProps = state => {
   return {
-    session: state.timer.session,
-    timeLeft: state.timer.timeLeft,
-    isRunning: state.timer.isRunning
+    timeLeft: state.timer.timeLeft
   };
 };
 
