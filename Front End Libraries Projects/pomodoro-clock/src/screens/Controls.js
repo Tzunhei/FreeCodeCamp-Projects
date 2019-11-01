@@ -7,8 +7,20 @@ import accurateInterval from "accurate-interval";
 import Button from "../components/Button";
 
 let timerInterval;
+let audioBeep;
 
-const Controls = ({ isOn, startTimer, stopTimer, resetTimer, updateTimer }) => {
+const Controls = ({
+  timeLeft,
+  isOn,
+  startTimer,
+  stopTimer,
+  resetTimer,
+  updateTimer
+}) => {
+  if (timeLeft === 0) {
+    audioBeep.play();
+  }
+
   const handleStartStopClick = () => {
     if (isOn && timerInterval) {
       stopTimer();
@@ -23,6 +35,8 @@ const Controls = ({ isOn, startTimer, stopTimer, resetTimer, updateTimer }) => {
     if (timerInterval) {
       timerInterval.clear();
       resetTimer();
+      audioBeep.pause();
+      audioBeep.currentTime = 0;
     }
   };
 
@@ -34,12 +48,18 @@ const Controls = ({ isOn, startTimer, stopTimer, resetTimer, updateTimer }) => {
       <Button handleClick={handleResetClick} id="reset">
         Reset
       </Button>
+      <audio
+        id="beepp"
+        src="https://goo.gl/65cBl1"
+        ref={audio => (audioBeep = audio)}
+      ></audio>
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
+    timeLeft: state.timer.timeLeft,
     isOn: state.timer.isOn
   };
 };

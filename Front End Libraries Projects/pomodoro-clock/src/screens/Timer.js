@@ -9,9 +9,8 @@ const Timer = ({ mode, timeLeft, changeMode }) => {
   if (timeLeft < 0) {
     mode === SESSION ? changeMode(BREAK) : changeMode(SESSION);
   }
-  const time = timeLeft;
-  const minutes = formatNumber(Math.floor(time / 60000));
-  const seconds = formatNumber(Math.floor((time % 60000) / 1000));
+  const minutes = formatNumber(Math.floor(timeLeft / 60000));
+  const seconds = formatNumber(Math.floor((timeLeft % 60000) / 1000));
   const timer = `${minutes}:${seconds}`;
   return (
     <div>

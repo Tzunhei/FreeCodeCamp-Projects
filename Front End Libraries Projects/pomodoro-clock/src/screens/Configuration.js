@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 import { setConfiguration } from "../actions";
 import ConfigSection from "../components/ConfigSection";
-import { convertToMs } from "../utils";
 
 const Configuration = ({
+  isOn,
   breakLength,
   sessionLength,
   incrementBreak,
@@ -14,45 +14,42 @@ const Configuration = ({
   decrementSession
 }) => {
   const handleIncrementBreak = e => {
-    if (breakLength < 60) {
+    if (breakLength < 60 && !isOn) {
       incrementBreak();
     }
   };
 
   const handleDecrementBreak = e => {
-    if (breakLength > 1) {
+    if (breakLength > 1 && !isOn) {
       decrementBreak();
     }
   };
 
   const handleIncrementSession = e => {
-    if (sessionLength < 60 * 60 * 1000) {
+    if (sessionLength < 60 && !isOn) {
       incrementSession();
     }
   };
 
   const handleDecrementSession = e => {
-    if (sessionLength > 1 * 60 * 1000) {
+    if (sessionLength > 1 && !isOn) {
       decrementSession();
     }
   };
-
-  const breakMinutes = convertToMs(breakLength);
-  const sessionMinutes = convertToMs(sessionLength);
 
   return (
     <div>
       <ConfigSection
         title={"Break Length"}
         type={"break"}
-        value={breakMinutes}
+        value={breakLength}
         handleIncrement={handleIncrementBreak}
         handleDecrement={handleDecrementBreak}
       />
       <ConfigSection
         title={"Session Length"}
         type={"session"}
-        value={sessionMinutes}
+        value={sessionLength}
         handleIncrement={handleIncrementSession}
         handleDecrement={handleDecrementSession}
       />
@@ -62,6 +59,7 @@ const Configuration = ({
 
 const mapStateToProps = state => {
   return {
+    isOn: state.timer.isOn,
     breakLength: state.timer.break,
     sessionLength: state.timer.session
   };
@@ -71,8 +69,8 @@ const mapDispatchToProps = dispatch => {
   return {
     incrementBreak: () => dispatch(setConfiguration("break", 1)),
     decrementBreak: () => dispatch(setConfiguration("break", -1)),
-    incrementSession: () => dispatch(setConfiguration("session", +60000)),
-    decrementSession: () => dispatch(setConfiguration("session", -60000))
+    incrementSession: () => dispatch(setConfiguration("session", 1)),
+    decrementSession: () => dispatch(setConfiguration("session", -1))
   };
 };
 

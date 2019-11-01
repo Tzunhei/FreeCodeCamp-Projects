@@ -11,10 +11,10 @@ import {
 
 const initialTimer = {
   mode: SESSION,
-  break: 5 * 60 * 1000,
-  session: 25 * 60 * 1000,
+  break: 5,
+  session: 25,
   isOn: false,
-  timeLeft: 1000
+  timeLeft: 25 * 60 * 1000
 };
 
 export default (state = initialTimer, action) => {
@@ -24,7 +24,7 @@ export default (state = initialTimer, action) => {
         return {
           ...state,
           session: state.session + action.payload.operation,
-          timeLeft: state.session + action.payload.operation
+          timeLeft: (state.session + action.payload.operation) * 60 * 1000
         };
       } else {
         return {
@@ -36,7 +36,10 @@ export default (state = initialTimer, action) => {
       return {
         ...state,
         mode: action.payload.mode,
-        timeLeft: action.payload.mode === BREAK ? state.break : state.session
+        timeLeft:
+          action.payload.mode === BREAK
+            ? state.break * 60 * 1000
+            : state.session * 60 * 1000
       };
     case START_TIMER:
       return {
@@ -56,8 +59,8 @@ export default (state = initialTimer, action) => {
     case RESET_TIMER:
       return {
         mode: SESSION,
-        break: 5 * 60 * 1000,
-        session: 25 * 60 * 1000,
+        break: 5,
+        session: 25,
         isOn: false,
         timeLeft: 25 * 60 * 1000
       };
