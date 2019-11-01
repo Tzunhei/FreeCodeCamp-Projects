@@ -1,5 +1,6 @@
 import {
   SET_CONFIGURATION,
+  CHANGE_MODE,
   START_TIMER,
   STOP_TIMER,
   UPDATE_TIMER,
@@ -12,6 +13,15 @@ export const setConfiguration = (option, operation) => {
     payload: {
       option,
       operation
+    }
+  };
+};
+
+export const changeMode = mode => {
+  return {
+    type: CHANGE_MODE,
+    payload: {
+      mode
     }
   };
 };

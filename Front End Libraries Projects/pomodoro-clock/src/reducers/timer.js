@@ -1,6 +1,7 @@
 import {
   SESSION,
   BREAK,
+  CHANGE_MODE,
   START_TIMER,
   STOP_TIMER,
   UPDATE_TIMER,
@@ -13,7 +14,7 @@ const initialTimer = {
   break: 5 * 60 * 1000,
   session: 25 * 60 * 1000,
   isOn: false,
-  timeLeft: 25 * 60 * 1000
+  timeLeft: 1000
 };
 
 export default (state = initialTimer, action) => {
@@ -31,6 +32,12 @@ export default (state = initialTimer, action) => {
           break: state.break + action.payload.operation
         };
       }
+    case CHANGE_MODE:
+      return {
+        ...state,
+        mode: action.payload.mode,
+        timeLeft: action.payload.mode === BREAK ? state.break : state.session
+      };
     case START_TIMER:
       return {
         ...state,
