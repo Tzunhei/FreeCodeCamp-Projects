@@ -1,4 +1,6 @@
 import {
+  SESSION,
+  BREAK,
   START_TIMER,
   STOP_TIMER,
   UPDATE_TIMER,
@@ -7,8 +9,8 @@ import {
 } from "../constants";
 
 const initialTimer = {
+  mode: SESSION,
   break: 5 * 60 * 1000,
-  isBreak: false,
   session: 25 * 60 * 1000,
   isOn: false,
   timeLeft: 25 * 60 * 1000
@@ -46,8 +48,8 @@ export default (state = initialTimer, action) => {
       };
     case RESET_TIMER:
       return {
-        break: 5,
-        isBreak: 0,
+        mode: SESSION,
+        break: 5 * 60 * 1000,
         session: 25 * 60 * 1000,
         isOn: false,
         timeLeft: 25 * 60 * 1000
