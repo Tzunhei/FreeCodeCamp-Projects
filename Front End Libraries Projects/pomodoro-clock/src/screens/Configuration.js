@@ -16,13 +16,13 @@ const Configuration = ({
   const minutes = Math.floor(sessionLength / 60000);
 
   const handleIncrementBreak = e => {
-    if (breakLength < 5) {
+    if (breakLength < 60) {
       incrementBreak();
     }
   };
 
   const handleDecrementBreak = e => {
-    if (breakLength > 0) {
+    if (breakLength > 1) {
       decrementBreak();
     }
   };

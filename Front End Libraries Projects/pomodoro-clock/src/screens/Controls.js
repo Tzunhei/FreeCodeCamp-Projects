@@ -8,15 +8,9 @@ import Button from "../components/Button";
 
 let timerInterval;
 
-const Controls = ({
-  isRunning,
-  startTimer,
-  stopTimer,
-  resetTimer,
-  updateTimer
-}) => {
+const Controls = ({ isOn, startTimer, stopTimer, resetTimer, updateTimer }) => {
   const handleStartStopClick = () => {
-    if (isRunning) {
+    if (isOn && timerInterval) {
       stopTimer();
       timerInterval.clear();
     } else {
@@ -26,14 +20,16 @@ const Controls = ({
   };
 
   const handleResetClick = () => {
-    timerInterval.clear();
-    resetTimer();
+    if (timerInterval) {
+      timerInterval.clear();
+      resetTimer();
+    }
   };
 
   return (
     <div>
       <Button handleClick={handleStartStopClick} id="start_stop">
-        {isRunning ? "Stop" : "Start"}
+        {isOn ? "Stop" : "Start"}
       </Button>
       <Button handleClick={handleResetClick} id="reset">
         Reset
@@ -44,7 +40,7 @@ const Controls = ({
 
 const mapStateToProps = state => {
   return {
-    isRunning: state.timer.isRunning
+    isOn: state.timer.isOn
   };
 };
 

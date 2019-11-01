@@ -8,8 +8,9 @@ import {
 
 const initialTimer = {
   break: 5,
+  isBreak: false,
   session: 25 * 60 * 1000,
-  isRunning: false,
+  isOn: false,
   timeLeft: 25 * 60 * 1000
 };
 
@@ -31,13 +32,13 @@ export default (state = initialTimer, action) => {
     case START_TIMER:
       return {
         ...state,
-        isRunning: true
+        isOn: true
       };
     case STOP_TIMER:
       console.log(state);
       return {
         ...state,
-        isRunning: false
+        isOn: false
       };
     case UPDATE_TIMER:
       return {
@@ -47,8 +48,9 @@ export default (state = initialTimer, action) => {
     case RESET_TIMER:
       return {
         break: 5,
+        isBreak: 0,
         session: 25 * 60 * 1000,
-        isRunning: false,
+        isOn: false,
         timeLeft: 25 * 60 * 1000
       };
     default:
