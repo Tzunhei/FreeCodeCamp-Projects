@@ -14,8 +14,10 @@ const Clock = ({ mode, timeLeft, changeMode }) => {
   const seconds = formatNumber(Math.floor((timeLeft % 60000) / 1000));
   const timer = `${minutes}:${seconds}`;
   return (
-    <div>
-      <h4 id="timer-label">{mode === "SESSION" ? "Session" : "Break"}</h4>
+    <div className="clock-container">
+      <h4 className="timer-label" id="timer-label">
+        {mode === "SESSION" ? "Session" : "Break"}
+      </h4>
       <p className="time-text" id="time-left">
         {timer}
       </p>

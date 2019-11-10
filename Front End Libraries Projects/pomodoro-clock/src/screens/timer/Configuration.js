@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import "./Configuration.css";
 
 import { setConfiguration } from "../../actions";
 import ConfigSection from "../../components/ConfigSection";
@@ -38,7 +39,7 @@ const Configuration = ({
   };
 
   return (
-    <div>
+    <div className="config-container">
       <ConfigSection
         title={"Break Length"}
         type={"break"}

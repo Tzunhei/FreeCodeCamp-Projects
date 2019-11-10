@@ -1,4 +1,12 @@
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .time-text {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 8em;
+  margin: 20px 0;
 }
