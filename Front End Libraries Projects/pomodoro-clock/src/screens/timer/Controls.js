@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { startTimer, stopTimer, updateTimer, resetTimer } from "../actions";
+import { startTimer, stopTimer, updateTimer, resetTimer } from "../../actions";
 
 import accurateInterval from "accurate-interval";
 
-import Button from "../components/Button";
+import Button from "../../components/Button";
 
 let timerInterval;
 let audioBeep;

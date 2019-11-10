@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setConfiguration } from "../actions";
-import ConfigSection from "../components/ConfigSection";
+import { setConfiguration } from "../../actions";
+import ConfigSection from "../../components/ConfigSection";
 
 const Configuration = ({
   isOn,

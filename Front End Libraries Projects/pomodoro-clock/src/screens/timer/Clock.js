@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { formatNumber } from "../utils";
-import { changeMode } from "../actions";
-import { BREAK, SESSION } from "../constants";
+import { formatNumber } from "../../utils";
+import { changeMode } from "../../actions";
+import { BREAK, SESSION } from "../../constants";
 
-const Timer = ({ mode, timeLeft, changeMode }) => {
+const Clock = ({ mode, timeLeft, changeMode }) => {
   if (timeLeft < 0) {
     mode === SESSION ? changeMode(BREAK) : changeMode(SESSION);
   }
@@ -30,4 +30,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { changeMode }
-)(Timer);
+)(Clock);
