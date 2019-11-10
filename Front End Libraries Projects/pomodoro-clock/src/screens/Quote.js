@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import "./Quote.css";
 
 import { fetchQuotes } from "../actions";
 
@@ -18,10 +19,12 @@ class Quote extends React.Component {
     console.log(this.props);
     return (
       this.props.quotes && (
-        <blockquote>
-          <p>{this.displayRandomQuote()}</p>
-          <footer></footer>
-        </blockquote>
+        <div className="quote-container">
+          <blockquote>
+            <p className="quote-text">" {this.displayRandomQuote()} "</p>
+            <footer className="quote-author"></footer>
+          </blockquote>
+        </div>
       )
     );
   }

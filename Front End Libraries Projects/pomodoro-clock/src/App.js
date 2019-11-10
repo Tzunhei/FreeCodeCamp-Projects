@@ -8,8 +8,10 @@ import Footer from "./screens/Footer";
 const App = () => {
   return (
     <div className="App">
-      <Quote />
-      <Timer />
+      <div className="app-container">
+        <Quote />
+        <Timer />
+      </div>
       <Footer />
     </div>
   );
