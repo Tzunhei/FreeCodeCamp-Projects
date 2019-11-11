@@ -10,6 +10,15 @@
 
 .time-text {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 8em;
+  font-size: 4em;
   margin: 20px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .time-text {
+    font-size: 8em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
 }
