@@ -1,3 +1,7 @@
 .config-container {
   text-align: center;
 }
+
+.config-container h4 {
+  font-size: 1.2em;
+}

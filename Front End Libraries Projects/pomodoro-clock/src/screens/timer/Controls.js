@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { startTimer, stopTimer, updateTimer, resetTimer } from "../../actions";
-
+import "./Controls.css";
 import accurateInterval from "accurate-interval";
 
 import Button from "../../components/Button";
@@ -41,7 +41,7 @@ const Controls = ({
   };
 
   return (
-    <div>
+    <div className="controls-container">
       <Button handleClick={handleStartStopClick} id="start_stop">
         {isOn ? "Stop" : "Start"}
       </Button>

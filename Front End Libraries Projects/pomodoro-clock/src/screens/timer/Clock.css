@@ -1,8 +1,11 @@
 .clock-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.timer-label {
+  margin: 0;
 }
 
 .time-text {

@@ -1,7 +1,6 @@
 import React from "react";
 import "./Timer.css";
 
-import Title from "./Title";
 import Configuration from "./Configuration";
 import Clock from "./Clock";
 import Controls from "./Controls";

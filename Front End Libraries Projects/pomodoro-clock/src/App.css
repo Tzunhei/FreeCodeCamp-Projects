@@ -8,6 +8,7 @@ body {
 }
 
 h4 {
+  margin: 0;
   font-size: 2em;
 }
 
@@ -29,5 +30,4 @@ h4 {
 
 .app-container {
   display: flex;
-  align-items: center;
 }

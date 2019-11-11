@@ -4,4 +4,9 @@
   color: #592941;
   font-size: 1em;
   font-weight: bold;
+  padding: 1em;
+}
+
+button:hover {
+  cursor: pointer;
 }

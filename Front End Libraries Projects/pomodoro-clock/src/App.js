@@ -4,7 +4,7 @@ import "./App.css";
 import Quote from "./screens/Quote";
 import Timer from "./screens/timer/Timer";
 import Footer from "./screens/Footer";
-import Title from "./screens/timer/Title";
+import Title from "./screens/Title";
 
 const App = () => {
   return (
