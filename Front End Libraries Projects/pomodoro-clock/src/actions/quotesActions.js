@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 
 export const fetchQuotes = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(addQuotesStarted());
     axios
       .get("https://type.fit/api/quotes")

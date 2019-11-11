@@ -3,12 +3,18 @@ import { connect } from "react-redux";
 import "./Quote.css";
 
 import { fetchQuotes } from "../actions";
+import { generateRandomIndex } from "../utils";
 
 class Quote extends React.Component {
   displayRandomQuote = () => {
-    const randomIndex =
-      Math.floor(Math.random() * this.props.quotes.length) + 1;
-    return this.props.quotes[randomIndex].text;
+    const randomIndex = generateRandomIndex(this.props.quotes);
+    const randomQuote = this.props.quotes[randomIndex];
+    return (
+      <>
+        <p className="quote-text">" {randomQuote.text} "</p>
+        <footer className="quote-author">- {randomQuote.author}</footer>
+      </>
+    );
   };
 
   componentDidMount() {
@@ -16,16 +22,14 @@ class Quote extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    return (
-      this.props.quotes && (
-        <div className="quote-container">
-          <blockquote>
-            <p className="quote-text">" {this.displayRandomQuote()} "</p>
-            <footer className="quote-author"></footer>
-          </blockquote>
-        </div>
-      )
+    return !this.props.quotes ? (
+      <div className="quote-container">
+        <p>Loading ...</p>
+      </div>
+    ) : (
+      <div className="quote-container">
+        <blockquote>{this.displayRandomQuote()}</blockquote>
+      </div>
     );
   }
 }
